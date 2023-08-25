@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 15px;
+            
+        }
+        div.box{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        div.content{
+            justify-content: center;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: inset 5px 10px 15px gray,
+                              5px 10px 15px black;
+            display: grid;
+            grid-template-columns: repeat(4,80px);
+        }
+        input{
+            font-family: sans-serif;
+            grid-column: span 4;
+            height: 80px;
+            width: 260px;
+            box-shadow: inset -5px -5px 10px blue,
+                        inset  5px  5px 10px blue;
+            color: rgb(70, 70, 70);
+            font-size: 70px;
+            text-align: end;
+            margin:auto;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 20px;
+
+        }
+        button{
+            height: 60px;
+            width: 60px;
+            padding: 10px;
+            border-radius: 20px;
+            margin: 5px;
+            border: none;
+            box-shadow: -5px -5px 15px ghostwhite,
+                        5px  5px  12px blue;
+            
+        }
+        button.eq{
+            width: 140px;
+            background-color: blue;
+            font-size: 50px;
+            padding-bottom: 50px ;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="content">
+        <input type="text" placeholder="0" id="out">
+        <button onclick="cler()">AC</button>
+        <button onclick="del()">DEL</button>
+        <button onclick="display('%')">%</button>
+        <button onclick="display('/')">/</button>
+        <button onclick="display('7')">7</button>
+        <button onclick="display('8')">8</button>
+        <button onclick="display('9')">9</button>
+        <button onclick="display('*')">*</button>
+        <button onclick="display('4')">4</button>
+        <button onclick="display('5')">5</button>
+        <button onclick="display('6')">6</button>
+        <button onclick="display('-')">-</button>
+        <button onclick="display('1')">1</button>
+        <button onclick="display('2')">2</button>
+        <button onclick="display('3')">3</button>
+        <button onclick="display('+')">+</button>
+        <button onclick="display('.')">.</button>
+        <button onclick="display('0')">0</button>
+        <button onclick="result()" class="eq">=</button>
+        </div>
+    </div>
+    
+</body>
+<script>
+    let output=document.getElementById("out");
+    function display(num){
+        output.value +=num;
+    }
+    function result(){
+        try{
+            output.value=eval(output.value);
+        }
+        catch(err)
+        {
+        alert("INVALID");
+        }
+         }
+    function cler(){
+        output.value = " ";
+    }
+    function del(){
+        output.value=output.value.slice(0,-1);
+    }
+</script>
+</html>
